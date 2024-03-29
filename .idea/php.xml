@@ -135,6 +135,7 @@
       <path value="$PROJECT_DIR$/project/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/project/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/project/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/project/vendor/symfony/webpack-encore-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
