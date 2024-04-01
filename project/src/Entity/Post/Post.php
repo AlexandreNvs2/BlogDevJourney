@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Post;
 
 
-use App\Repository\PostRepository;
+use App\Repository\Post\PostRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping\JoinTable;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -47,6 +45,11 @@ class Post
     #[Assert\NotNull()]
     private \DateTimeImmutable $createdAt;
 
+    #[ORM\OneToOne(inversedBy: 'post', targetEntity: Thumbnail::class, cascade: ['persist', 'remove'])]
+    # Relation un-à-un avec Thumbnail. Le persist et remove de Post entraîne celui de Thumbnail associé.
+    private ?Thumbnail $thumbnail = null;
+
+
 
     public function __construct()
     {
@@ -55,11 +58,11 @@ class Post
     }
 
     # Génère automatiquement un slug à partir du titre avant la première sauvegarde.
-  #  #[ORM\PrePersist]
-   # public function prePersist()
-   # {
-   #     $this->slug = (new Slugify())->slugify($this->title);
-   # }
+    #[ORM\PrePersist]
+    public function prePersist()
+    {
+        $this->slug = (new Slugify())->slugify($this->title);
+    }
 
     # Met à jour le timestamp `updatedAt` avant chaque mise à jour de l'entité.
     #[ORM\PreUpdate]
@@ -120,7 +123,17 @@ class Post
 
         return $this;
     }
+    public function getThumbnail(): ?Thumbnail
+    {
+        return $this->thumbnail;
+    }
 
+    public function setThumbnail(?Thumbnail $thumbnail): self
+    {
+        $this->thumbnail = $thumbnail;
+
+        return $this;
+    }
 
     public function getUpdatedAt(): \DateTimeImmutable
     {

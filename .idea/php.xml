@@ -136,6 +136,9 @@
       <path value="$PROJECT_DIR$/project/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/project/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/project/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/project/vendor/cocur/slugify" />
+      <path value="$PROJECT_DIR$/project/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/project/vendor/vich/uploader-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
