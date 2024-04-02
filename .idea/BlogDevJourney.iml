@@ -135,6 +135,9 @@
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/symfony/webpack-encore-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/cocur/slugify" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/doctrine/data-fixtures" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/doctrine/doctrine-fixtures-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/fakerphp/faker" />
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/jms/metadata" />
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/vich/uploader-bundle" />
     </content>
