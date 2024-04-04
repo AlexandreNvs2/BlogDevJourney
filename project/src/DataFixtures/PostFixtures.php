@@ -15,13 +15,12 @@ class PostFixtures extends Fixture
 
         for ($i = 0; $i < 150; $i++) {
             $post = new Post();
-            $post->setTitle($faker->word(4, true))
+            $title = $faker->unique()->word . ' ' . $faker->words(3, true); // Assure un meilleur niveau d'unicité
+            $post->setTitle($title)
                 ->setContent($faker->realText(1800))
                 ->setState(mt_rand(0, 2) === 1 ? Post::STATES[0] : Post::STATES[1]);
 
             $manager->persist($post);
         }
-
-        $manager->flush();
     }
-}
+    }

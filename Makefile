@@ -26,7 +26,7 @@ cache-clear: ## Clear cache
 tests: ## Run all tests
 	$(MAKE) database-init-test
 	$(PHP) bin/phpunit --testdox tests/Unit/
-	$(PHP) bin/phpunit --testdox tests/Functional/
+	$(PHP) bin/phpunit --testdox tests/Functionnal/
 	$(PHP) bin/phpunit --testdox tests/E2E/
 
 database-init-test: ## Init database for test
