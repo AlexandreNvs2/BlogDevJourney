@@ -3,7 +3,6 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/project/src" isTestSource="false" packagePrefix="App\" />
-      <sourceFolder url="file://$MODULE_DIR$/project/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/project/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/BlogDevJourney/project/src" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/BlogDevJourney/project/tests" isTestSource="true" packagePrefix="App\Tests\" />
@@ -141,6 +140,8 @@
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/jms/metadata" />
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/vich/uploader-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/twig/string-extra" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/knplabs/knp-components" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/knplabs/knp-paginator-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
