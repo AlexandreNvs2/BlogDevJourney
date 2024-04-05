@@ -13,14 +13,17 @@ class PostFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
-        for ($i = 0; $i < 150; $i++) {
+        for ($i = 0; $i < 150; $i++) { // Test avec un plus petit nombre pour diagnostiquer le problème
+            $faker->unique($reset = true); // Réinitialiser l'état unique
             $post = new Post();
-            $title = $faker->unique()->word . ' ' . $faker->words(3, true); // Assure un meilleur niveau d'unicité
+            $title = $faker->unique()->word . ' ' . $faker->words(3, true);
             $post->setTitle($title)
                 ->setContent($faker->realText(1800))
                 ->setState(mt_rand(0, 2) === 1 ? Post::STATES[0] : Post::STATES[1]);
 
             $manager->persist($post);
         }
+        $manager->flush();
+
     }
-    }
+}
