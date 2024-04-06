@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use JetBrains\PhpStorm\NoReturn;
 
 
@@ -99,5 +99,44 @@ class PostTest extends WebTestCase
         // Assure que la route correspond bien à la page d'index du blog
         $this->assertRouteSame('post.index');
     }
+    public function testShareOnTwitterWorks(): void
+    {
+        $client = static::createClient();
+
+        /** @var UrlGeneratorInterface */
+        $urlGeneratorInterface = $client->getContainer()->get('router');
+
+        /** @var EntityManagerInterface */
+        $entityManager = $client->getContainer()->get('doctrine.orm.entity_manager');
+
+        /** @var PostRepository */
+        $postRepository = $entityManager->getRepository(Post::class);
+
+        /** @var Post */
+        $post = $postRepository->findOneBy([]);
+
+        $postLink = $urlGeneratorInterface->generate('post.show', ['slug' => $post->getSlug()]);
+
+        $crawler = $client->request(
+            Request::METHOD_GET,
+            $postLink
+        );
+
+        $this->assertResponseIsSuccessful();
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+
+        $link = $crawler->filter('.share.twitter')->link()->getUri();
+
+        $this->assertStringContainsString(
+            "https://twitter.com/intent/tweet",
+            $link
+        );
+
+        $this->assertStringContainsString(
+            $postLink,
+            $link
+        );
+    }
+
 }
 
