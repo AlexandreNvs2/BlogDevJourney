@@ -21,6 +21,10 @@ init: ## Init the project
 cache-clear: ## Clear cache
 	$(SYMFONY_CONSOLE) cache:clear
 
+cache-clear-test:
+	$(SYMFONY_CONSOLE) cache:clear --env=test
+
+
 ## —— ✅ Test ——
 .PHONY: tests
 tests: ## Run all tests
@@ -41,7 +45,7 @@ unit-test: ## Run unit tests
 
 functional-test: ## Run functional tests
 	$(MAKE) database-init-test
-	$(PHP) bin/phpunit --testdox tests/Functional/
+	$(PHP) bin/phpunit --testdox tests/Functionnal/
 
 # PANTHER_NO_HEADLESS=1 ./bin/phpunit --filter LikeTest --debug to debug with Chrome
 e2e-test: ## Run E2E tests

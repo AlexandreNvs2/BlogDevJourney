@@ -145,6 +145,9 @@
       <path value="$PROJECT_DIR$/project/vendor/twig/string-extra" />
       <path value="$PROJECT_DIR$/project/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/project/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/project/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/project/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/project/vendor/spryker/web-profiler-extension" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />

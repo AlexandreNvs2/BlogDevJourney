@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "69300e141b144a2efe19d47a05b0509a",
+    "content-hash": "92a318ed2476f23dc84c733f92d1c3f7",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -2317,6 +2317,54 @@
             },
             "abandoned": "Symfony",
             "time": "2023-02-24T14:57:12+00:00"
+        },
+        {
+            "name": "spryker/web-profiler-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/web-profiler-extension.git",
+                "reference": "fa7c5b30a89c14fc5aae6dda57182b4676b4bd59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/web-profiler-extension/zipball/fa7c5b30a89c14fc5aae6dda57182b4676b4bd59",
+                "reference": "fa7c5b30a89c14fc5aae6dda57182b4676b4bd59",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use the Container module.",
+                "spryker/symfony": "If you want to use the Symfony component."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "WebProfilerExtension module",
+            "support": {
+                "source": "https://github.com/spryker/web-profiler-extension/tree/1.0.0"
+            },
+            "time": "2019-10-09T04:52:31+00:00"
         },
         {
             "name": "symfony/asset",

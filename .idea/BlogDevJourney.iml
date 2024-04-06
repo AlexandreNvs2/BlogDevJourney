@@ -142,6 +142,9 @@
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/twig/string-extra" />
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/knplabs/knp-components" />
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/knplabs/knp-paginator-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/doctrine/annotations" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/sensio/framework-extra-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spryker/web-profiler-extension" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

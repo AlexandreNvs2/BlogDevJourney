@@ -4,7 +4,6 @@ namespace App\Controller\Blog;
 
 use App\Entity\Post\Post;
 use App\Repository\Post\PostRepository;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     #[Route('/', name: 'post.index' , methods: ['GET'])]
-    public function index(PostRepository $postRepository, PaginatorInterface $paginator ,Request $request): Response
+    public function index(PostRepository $postRepository ,Request $request): Response
     {
         $posts = $postRepository->findPublished($request->query->getInt('page', 1));
 
@@ -27,7 +26,6 @@ class PostController extends AbstractController
     /**
      * Cette route capte un 'slug' de l'URL et le passe à la méthode show().
      * @param Post $post
-     * @param PostRepository $postRepository
      * @return Response
      */
     // Cette route capte un 'slug' de l'URL et le passe à la méthode show().
