@@ -31,7 +31,7 @@ class Category
     #[ORM\Column(type: 'text', nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type:'datetime_immutable')]
     #[Assert\NotNull]
     private \DateTimeImmutable $createdAt;
 
