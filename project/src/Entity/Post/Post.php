@@ -5,6 +5,8 @@ namespace App\Entity\Post;
 
 use App\Repository\Post\PostRepository;
 use Cocur\Slugify\Slugify;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -49,12 +51,16 @@ class Post
     # Relation un-à-un avec Thumbnail. Le persist et remove de Post entraîne celui de Thumbnail associé.
     private ?Thumbnail $thumbnail = null;
 
+    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'posts')]
+    private Collection $categories;
+
 
 
     public function __construct()
     {
         $this->updatedAt = new \DateTimeImmutable();
         $this->createdAt = new \DateTimeImmutable();
+        $this->categories = new ArrayCollection();
     }
 
     # Génère automatiquement un slug à partir du titre avant la première sauvegarde.
@@ -156,6 +162,20 @@ class Post
     {
         $this->createdAt = $createdAt;
 
+        return $this;
+    }
+
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->addPost($this);
+        }
         return $this;
     }
 

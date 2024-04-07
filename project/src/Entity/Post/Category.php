@@ -4,7 +4,11 @@ namespace App\Entity\Post;
 
 use App\Repository\Post\CategoryRepository;
 use Cocur\Slugify\Slugify;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use phpDocumentor\Reflection\Types\Self_;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -31,11 +35,17 @@ class Category
     #[Assert\NotNull]
     private \DateTimeImmutable $createdAt;
 
+    #[ORM\ManyToMany(targetEntity: Post::class, inversedBy: 'categories')]
+    #[JoinColumn(name:'categories_posts')]
+    private Collection $posts;
+
     public function __construct()
     {
-
         $this->createdAt = new \DateTimeImmutable();
+        $this->posts = new ArrayCollection();
     }
+
+    # Génère automatiquement un slug à partir du titre avant la première sauvegarde.
     #[ORM\PrePersist]
     public function prePersist(): void
     {
@@ -94,6 +104,24 @@ class Category
         $this->name = $name;
 
         return $this;
+    }
+
+    public function addPost(Post $post): self
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+        }
+        return $this;
+    }
+
+    public function removePost(Post $post): self
+    {
+        $this->posts->removeElement($post);
+        return $this;
+    }
+    public function getPosts(): Collection
+    {
+        return $this->posts;
     }
     public function __toString(){
         return $this->name;
