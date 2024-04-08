@@ -18,7 +18,7 @@ class PostController extends AbstractController
         $posts = $postRepository->findPublished($request->query->getInt('page', 1));
 
 
-        return $this->render('pages/blog/index.html.twig',[
+        return $this->render('pages/post/index.html.twig',[
             #permet d'utiliser la variables $posts au sein du twig
             'posts' => $posts
             ]);
@@ -36,6 +36,6 @@ class PostController extends AbstractController
         // Si aucun Post trouvé pour 'slug', une erreur 404 est générée.
 
         // Génère le HTML en utilisant 'post' trouvé pour le template spécifié.
-        return $this->render('pages/blog/show.html.twig', ['post' => $post]);
+        return $this->render('pages/post/show.html.twig', ['post' => $post]);
     }
 }

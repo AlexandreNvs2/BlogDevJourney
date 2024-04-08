@@ -86,17 +86,17 @@ class PostTest extends WebTestCase
         // Vérifie que le code de statut de la réponse est HTTP 200
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
 
-        // Utilise le crawler pour trouver le lien de retour au blog et récupère son URI
-        $link = $crawler->selectLink('Retourner au blog')->link()->getUri();
+        // Utilise le crawler pour trouver le lien de retour au post et récupère son URI
+        $link = $crawler->selectLink('Retourner au post')->link()->getUri();
 
-        // Effectue une nouvelle requête GET sur le lien de retour au blog
+        // Effectue une nouvelle requête GET sur le lien de retour au post
         $crawler = $client->request(Request::METHOD_GET, $link);
 
-        // Vérifie que la réponse à la page d'accueil du blog est réussie
+        // Vérifie que la réponse à la page d'accueil du post est réussie
         $this->assertResponseIsSuccessful();
         // Vérifie que le code de statut de la réponse est HTTP 200
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        // Assure que la route correspond bien à la page d'index du blog
+        // Assure que la route correspond bien à la page d'index du post
         $this->assertRouteSame('post.index');
     }
     public function testShareOnTwitterWorks(): void
