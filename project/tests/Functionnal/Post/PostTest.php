@@ -87,7 +87,7 @@ class PostTest extends WebTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
 
         // Utilise le crawler pour trouver le lien de retour au post et récupère son URI
-        $link = $crawler->selectLink('Retourner au post')->link()->getUri();
+        $link = $crawler->selectLink('Retourner au blog')->link()->getUri();
 
         // Effectue une nouvelle requête GET sur le lien de retour au post
         $crawler = $client->request(Request::METHOD_GET, $link);
