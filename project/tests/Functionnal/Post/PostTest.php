@@ -137,6 +137,36 @@ class PostTest extends WebTestCase
             $link
         );
     }
+    public function testCategoriesAreDisplay(): void
+    {
+        $client = static::createClient();
+
+        /** @var UrlGeneratorInterface */
+        $urlGeneratorInterface = $client->getContainer()->get('router');
+
+        /** @var EntityManagerInterface */
+        $entityManager = $client->getContainer()->get('doctrine.orm.entity_manager');
+
+        /** @var PostRepository */
+        $postRepository = $entityManager->getRepository(Post::class);
+
+        /** @var Post */
+        $post = $postRepository->findOneBy([]);
+
+        $crawler = $client->request(
+            Request::METHOD_GET,
+            $urlGeneratorInterface->generate('post.show', ['slug' => $post->getSlug()])
+        );
+
+        $this->assertResponseIsSuccessful();
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+
+        if (!$post->getCategories()->isEmpty()) {
+            $badges = $crawler->filter('.badges')->children();
+            $this->assertGreaterThanOrEqual(1, count($badges));
+        }
+    }
+
 
 }
 
