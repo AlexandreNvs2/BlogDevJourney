@@ -16,13 +16,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CategoryController extends AbstractController
 {
     #[Route('/{slug}', name: 'category.index', methods: ['GET'])]
-    public function index(Category $category, PostRepository $postRepository, Request $request): Response
-    {
-        $posts = $postRepository->findPublished($request->query->getInt('page',1), $category);
+    public function index(
+        Category $category,
+        PostRepository $postRepository,
+        Request $request
+    ): Response {
+        $searchData = new SearchData();
+        $form = $this->createForm(SearchType::class, $searchData);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $searchData->page = $request->query->getInt('page', 1);
+            $posts = $postRepository->findBySearch($searchData);
+
+            return $this->render('pages/post/index.html.twig', [
+                'category' => $category,
+                'form' => $form->createView(),
+                'posts' => $posts
+            ]);
+        }
 
         return $this->render('pages/category/index.html.twig', [
             'category' => $category,
-            'posts' => $posts
+            'form' => $form->createView(),
+            'posts' => $postRepository->findPublished($request->query->getInt('page', 1), $category)
         ]);
     }
 }
