@@ -20,6 +20,9 @@ security:
                 check_path: security.login
             logout:
                 path: security.logout
+            remember_me :
+                secret: '%kernel_secret'
+                lifetime : 604800
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
