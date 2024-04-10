@@ -5,6 +5,9 @@
             <img src="{{ vich_uploader_asset(post.thumbnail, 'imageFile') }}" alt="{{ post.thumbnail.imageName }}" class="rounded-t-lg">
         </a>
     {% endif %}
+
+    {% include "components/_like.html.twig" %}
+
     <div class="p-5">
         <a href="{{ path('post.show', {slug : post.slug }) }}">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ post.title }}</h5>
