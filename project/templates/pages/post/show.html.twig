@@ -33,10 +33,9 @@
 
         <div class="w-2/3 mx-auto my-8 leading-6">
             {% include "components/_badges.html.twig" with {
-                badges : post.categories
+                badges: post.categories
             } only %}
         </div>
-
 
         <div class="w-2/3 mx-auto my-8 leading-6">
             {{ post.content|raw }}
@@ -58,31 +57,31 @@
                 {% endfor %}
             </ul>
 
-
-            <div class="mt-5">
-                <h2 class="text-2xl mb-8">Commentaire(s)</h2>
+            <div class="mt-3">
+                <h2 class="text-xl mb-4">Commentaire(s)</h2>
                 <div class="comments">
                     {% if app.user %}
                         <div class="comments__new">
-                            <div class="w-full-width">
-                              {#  {{ form_start(form) }}
-                                {{ form_label(form.content, 'Nouveau commentaire', {'attr' : {'class' : 'form-label inline-block mb-2 text-gray-700'}}) }}
-                                {{ form_widget(form.content, {'attr': {'class': 'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'}}) }}
-                                <button class="btn inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center mt-5" type="submit" id="button-addon2">
+                            <div class="w-full">
+                                {{ form_start(form) }}
+                                {{ form_label(form.content, 'Nouveau commentaire', {'attr' : {'class' : 'form-label inline-block mb-1 text-gray-700'}}) }}
+                                {{ form_widget(form.content, {'attr': {'class': 'form-control block w-full px-2 py-1 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'}}) }}
+                                <button class="btn inline-block px-4 py-2 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center mt-3" type="submit" id="button-addon2">
                                     Poster mon commentaire
                                 </button>
 
-                                {{ form_end(form) }}#}
+                                {{ form_end(form) }}
                             </div>
                         </div>
                     {% endif %}
 
-                    <hr class="my-3">
+                    <hr class="my-2">
 
-
+                    {% for comment in post.comments %}
+                        {% include 'components/_comment.html.twig' %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
-
     </div>
 {% endblock %}

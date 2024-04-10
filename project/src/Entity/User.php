@@ -62,16 +62,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\PrePersist]
     public function prePersist(): void
     {
-        $styleName = 'pixel-art'; // Exemple de style
+        $styleName = 'lorelei-neutral'; // Exemple de style
 
         // Utilisez urlencode pour encoder l'email et l'inclure de manière sécurisée dans l'URL.
-        $this->avatar = 'https://api.dicebear.com/8.x/' . $styleName . '/svg?seed=' . urlencode($this->email);
+        $this->avatar = 'https://api.dicebear.com/8.x/' .$styleName. '/svg?seed=' . urlencode($this->email);
     }
 
     #[ORM\PreUpdate]
     public function preUpdate(): void
     {
-        $this->avatar = 'https://avatars.dicebear.com/api/big-ears-neutral/' . $this->email . '.svg';
+        $styleName = 'lorelei-neutral'; // Exemple de style
+
+        $this->avatar = 'https://api.dicebear.com/8.x/' .$styleName. '/svg?seed=' . urlencode($this->email);
         $this->updatedAt = new \DateTimeImmutable();
     }
 
