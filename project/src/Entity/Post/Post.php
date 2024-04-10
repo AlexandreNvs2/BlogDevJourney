@@ -235,6 +235,10 @@ class Post
     {
         return $this->likes->contains($user);
     }
+    public function howManyLikes()
+    {
+        return count($this->likes);
+    }
 
     public function __toString()
     {

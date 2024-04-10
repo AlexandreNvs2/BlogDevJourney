@@ -8,7 +8,16 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
 import 'tw-elements'
+import Like from "./scripts/file";
 /*
 Ici on affiche dans la console que webpack fonctionne
  */
-console.log('Webpack Encore is Working :)')
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Webpack Encore is working !');
+
+    // Like's system
+    const likeElements = [].slice.call(document.querySelectorAll('a[data-action="like"]'));
+    if (likeElements) {
+        new Like(likeElements);
+    }
+})

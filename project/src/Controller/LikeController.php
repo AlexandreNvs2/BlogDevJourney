@@ -24,7 +24,7 @@ class LikeController extends AbstractController
 
             return $this->json([
                 'message' => 'Le like a été supprimé.',
-               # 'nbLike' => $post->howManyLikes()
+                'nbLike' => $post->howManyLikes()
             ]);
         }
 
@@ -33,7 +33,7 @@ class LikeController extends AbstractController
 
         return $this->json([
             'message' => 'Le like a été ajouté.',
-           # 'nbLike' => $post->howManyLikes()
+            'nbLike' => $post->howManyLikes()
         ]);
     }
 }
