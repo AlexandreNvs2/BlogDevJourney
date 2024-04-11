@@ -28,7 +28,7 @@ class CommentFixtures extends Fixture implements DependentFixtureInterface
             for ($i = 0; $i < mt_rand(0, 15); $i++) {
                 $comment = new Comment();
                 $comment->setContent($faker->realText)
-                    ->setIsApproved(!(mt_rand(0, 3) === 0))
+                    ->setIsApproved(true)
                     ->setAuthor($users[mt_rand(0, count($users) -1)])
                     ->setPost($post);
 

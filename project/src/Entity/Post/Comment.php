@@ -19,7 +19,7 @@ class Comment
     private string $content;
 
     #[ORM\Column(type: 'boolean')]
-    private bool $isApproved = false;
+    private bool $isApproved = true;
 
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: false)]
