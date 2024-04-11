@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<div class="container mb-2 mt-0 text-3xl focus:text-black leading-tight text-primary">
+    <h1 class="text-center mt-5">Inscription</h1> <!-- Ajout du titre ici -->
+    <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800 m-24">
+        <div class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="w-fit" alt="Illustration"/>
+        </div>
+        <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
+            <form name="registration" action="{{ path('security.registration') }}" method="post">
+                <!-- Email input -->
+                <div class="mb-6">
+                    <input type="email" id="email" name="email" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Adresse email" required/>
+                </div>
+
+                <!-- Password input -->
+                <div class="mb-6">
+                    <input type="password" id="password" name="password" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Mot de passe" required/>
+                </div>
+
+                <!-- First name input -->
+                <div class="mb-6">
+                    <input type="text" id="firstName" name="firstName" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Prénom" required/>
+                </div>
+
+                <!-- Last name input -->
+                <div class="mb-6">
+                    <input type="text" id="lastName" name="lastName" class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Nom" required/>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full" data-mdb-ripple="true" data-mdb-ripple-color="light">
+                    S'inscrire
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
