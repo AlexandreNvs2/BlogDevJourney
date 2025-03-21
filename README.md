@@ -7,3 +7,7 @@ Page d'accueil
 Barre de recherche avec filtre 
 <img width="327" alt="Capture d’écran 2024-05-29 à 00 07 07" src="https://github.com/user-attachments/assets/065f4805-27ff-407d-8016-3ee0e545ea4c" />
 
+
+<img width="1394" alt="Capture d’écran 2024-05-29 à 00 06 23" src="https://github.com/user-attachments/assets/13f352c0-6a37-4115-974c-dcad046b9d1a" />
+
+
